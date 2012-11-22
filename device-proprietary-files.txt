@@ -184,3 +184,4 @@ lib/libqc-opt.so
 
 # Comanche specific
 lib/libwvm.so
+lib/libimage-omx-common.so

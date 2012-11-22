@@ -3,13 +3,13 @@
 # against the traditional rules of inheritance).
 USE_CAMERA_STUB := true
 
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/comanche/include
-
 # inherit from common msm8960
 -include device/samsung/msm8960-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/samsung/comanche/BoardConfigVendor.mk
+
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/comanche/include
 
 # Kernel
 #TARGET_PREBUILT_KERNEL      := device/samsung/comanche/kernel
