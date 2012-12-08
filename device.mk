@@ -23,8 +23,24 @@ PRODUCT_COPY_FILES += \
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
-    device/samsung/comanche/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
-    device/samsung/comanche/audio/audio_policy.conf:system/etc/audio_policy.conf
+    device/samsung/comanche/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    device/samsung/comanche/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
+#    device/samsung/comanche/audio/snd_soc_msm/snd_soc_msm:system/etc/snd_soc_msm/snd_soc_msm \
+#    device/samsung/comanche/audio/snd_soc_msm/Call_DL_Rec:system/etc/snd_soc_msm/Call_DL_Rec \
+#    device/samsung/comanche/audio/snd_soc_msm/Call_UL_DL_Rec:system/etc/snd_soc_msm/Call_UL_DL_Rec \
+#    device/samsung/comanche/audio/snd_soc_msm/DSP_Loopback:system/etc/snd_soc_msm/DSP_Loopback \
+#    device/samsung/comanche/audio/snd_soc_msm/HiFi:system/etc/snd_soc_msm/HiFi \
+#    device/samsung/comanche/audio/snd_soc_msm/HiFi_Low_Power:system/etc/snd_soc_msm/HiFi_Low_Power \
+#    device/samsung/comanche/audio/snd_soc_msm/HiFi_Rec:system/etc/snd_soc_msm/HiFi_Rec \
+#    device/samsung/comanche/audio/snd_soc_msm/HiFi_Voice_Recognition:system/etc/snd_soc_msm/HiFi_Voice_Recognition \
+#    device/samsung/comanche/audio/snd_soc_msm/Loopback:system/etc/snd_soc_msm/Loopback \
+#    device/samsung/comanche/audio/snd_soc_msm/Video_Call:system/etc/snd_soc_msm/Video_Call \
+#    device/samsung/comanche/audio/snd_soc_msm/Voice_Call1:system/etc/snd_soc_msm/Voice_Call1 \
+#    device/samsung/comanche/audio/snd_soc_msm/VoIP1:system/etc/snd_soc_msm/VoIP1 \
+#    device/samsung/comanche/audio/snd_soc_msm/VoIP2:system/etc/snd_soc_msm/VoIP2 \
+#    device/samsung/comanche/audio/snd_soc_msm/VoIP3:system/etc/snd_soc_msm/VoIP3 \
+#    device/samsung/comanche/audio/snd_soc_msm/VoIP4:system/etc/snd_soc_msm/VoIP4 \
+#    device/samsung/comanche/audio/snd_soc_msm/VoIP5:system/etc/snd_soc_msm/VoIP5
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -34,7 +50,10 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.target.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    comanche_init.qcom.usb.sh \
+    init.qcom.bt.sh \
+    init.qcom.wifi.sh
 
 # Torch
 PRODUCT_PACKAGES += Torch
@@ -45,7 +64,7 @@ PRODUCT_COPY_FILES += \
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp \
+    persist.sys.usb.config=mtp,adb \
     ro.debuggable=1 \
     persist.service.adb.enable=1
 
@@ -78,7 +97,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.speaker.location=high \
     ro.qc.sdk.audio.fluencetype=fluence \
     persist.timed.enable=true \
-    ro.emmc.sdcard.partition=15 \
+    ro.emmc.sdcard.partition=17 \
     ro.use_data_netmgrd=true \
     persist.data_netmgrd_nint=16 \
     lpa.decode=true \
