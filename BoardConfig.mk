@@ -14,6 +14,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/comanche/include
 # Kernel
 #TARGET_PREBUILT_KERNEL      := device/samsung/comanche/kernel
 TARGET_KERNEL_SOURCE        := kernel/samsung/comanche_samsung
+#TARGET_KERNEL_SOURCE        := kernel/samsung/d2
 TARGET_KERNEL_CONFIG        := comanche_rev02_defconfig
 BOARD_KERNEL_CMDLINE        := console=null androidboot.hardware=qcom user_debug=31
 BOARD_KERNEL_BASE           := 0x80200000
@@ -41,11 +42,26 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Disable initlogo, Samsungs framebuffer is weird
 TARGET_NO_INITLOGO := true
 
+# MTP Fixup
+#BOARD_MTP_DEVICE := "/dev/usb_mtp_gadget"
+
 # Use Audience A2220 chip
 BOARD_HAVE_AUDIENCE_A2220 := true
 
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+TARGET_CUSTOM_BLUEDROID := ../../../device/samsung/comanche/bluetooth/bluetooth.c
+
+# HAX
+#BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true
+#BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
+#TARGET_PROVIDES_LIBAUDIO := true
+
 # Camera
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
+BOARD_USES_PROPRIETARY_LIBCAMERA := true
+BOARD_USES_PROPRIETARY_LIBFIMC := true
+COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := comanche,SGH-I547
@@ -54,6 +70,28 @@ TARGET_OTA_ASSERT_DEVICE := comanche,SGH-I547
 TARGET_NO_HW_VSYNC := true
 #TARGET_USES_C2D_COMPOSITION := true # In qcom-common
 #USE_OPENGL_RENDERER := true  # In qcom-common
+
+
+# Wifi
+
+# Wifi
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
+BOARD_HOSTAPD_DRIVER             := NL80211
+BOARD_WLAN_DEVICE                := qcwcn
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
+WIFI_DRIVER_MODULE_NAME := wlan
+
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB :=
+BOARD_HOSTAPD_PRIVATE_LIB :=
+BOARD_HAVE_SAMSUNG_WIFI :=
+WIFI_DRIVER_MODULE_ARG :=
+WIFI_DRIVER_FW_PATH_PARAM :=
+WIFI_DRIVER_FW_PATH_STA :=
+WIFI_DRIVER_FW_PATH_AP :=
+WIFI_DRIVER_FW_PATH_P2P :=
+
+
 
 # TWRP
 DEVICE_RESOLUTION := 480x800
