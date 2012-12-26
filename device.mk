@@ -21,6 +21,10 @@ PRODUCT_COPY_FILES += \
     device/samsung/comanche/overlay/device/samsung/msm8960-common/keylayout/sec_keys.kl:system/usr/keylayout/sec_keys.kl \
     device/samsung/comanche/overlay/device/samsung/msm8960-common/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl
 
+# WPA Supplicant
+PRODUCT_COPY_FILES += \
+    device/samsung/comanche/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf
+
 # Audio configuration
 PRODUCT_COPY_FILES += \
     device/samsung/comanche/audio/audio_policy.conf:system/etc/audio_policy.conf \
@@ -94,16 +98,23 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.mode=endfire \
     persist.audio.vr.enable=false \
     persist.audio.handset.mic=digital \
-    persist.audio.speaker.location=high \
     ro.qc.sdk.audio.fluencetype=fluence \
     persist.timed.enable=true \
     ro.emmc.sdcard.partition=17 \
     ro.use_data_netmgrd=true \
     persist.data_netmgrd_nint=16 \
-    lpa.decode=true \
+    lpa.decode=false \
+    lpa.use-stagefright=false \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \
-    ro.telephony.ril.v3=skipnullaid
+    ro.telephony.ril.v3=skipnullaid \
+    ro.sf.compbypass.enable=1 \
+    debug.composition.type=dyn \
+    debug.egl.hw=1 \
+    ro.product.wireless=WCN3660 \
+    wifi.interface=wlan0 \
+    ro.use_data_netmgrd=true
+    
 
 # common msm8960
 $(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
