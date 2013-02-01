@@ -1,6 +1,9 @@
 # system.prop for SGH-I547
 #
 
+# BT Fix
+ro.qualcomm.bt.hci_transport=smd
+
 # cannot take spaces
 rild.libargs=-d /dev/smd0
 

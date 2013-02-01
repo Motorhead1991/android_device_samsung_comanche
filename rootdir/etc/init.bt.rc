@@ -2,7 +2,7 @@ on boot
 
 setprop ro.tvout.enable false
 # for bluetooth
-service hciattach /system/bin/sh /init.qcom.bt.sh
+service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
     group qcom_oncrpc bluetooth net_bt_admin system radio

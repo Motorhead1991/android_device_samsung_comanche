@@ -16,6 +16,12 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 TARGET_SCREEN_HEIGHT := 800
 TARGET_SCREEN_WIDTH := 480
 
+# init sh scripts
+PRODUCT_COPY_FILES += \
+    device/samsung/comanche/rootdir/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+    device/samsung/comanche/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
+    device/samsung/comanche/rootdir/etc/init.qcom.usb.sh:system/etc/init.qcom.usb.sh
+
 # Keymaps (comanche has extra key / non-standard keymaps compared to msm8960-common)
 PRODUCT_COPY_FILES += \
     device/samsung/comanche/overlay/device/samsung/msm8960-common/keylayout/sec_keys.kl:system/usr/keylayout/sec_keys.kl \
@@ -54,10 +60,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.target.rc \
-    ueventd.qcom.rc \
-    comanche_init.qcom.usb.sh \
-    init.qcom.bt.sh \
-    init.qcom.wifi.sh
+    ueventd.qcom.rc
 
 # Torch
 PRODUCT_PACKAGES += Torch
