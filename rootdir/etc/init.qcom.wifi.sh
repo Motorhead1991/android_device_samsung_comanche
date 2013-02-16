@@ -34,26 +34,117 @@
 # the script won't do anything. Otherwise (GUI is not going to Turn On
 # the Wifi) the script will load/unload the driver
 # This script will get called after post bootup.
+target=`getprop ro.board.platform`
+case "$target" in
+    msm8960* | jaguar* | m2*)
+        # The property below is used in Qcom SDK for softap to determine
+        # the wifi driver config file
+        setprop wlan.driver.config /data/misc/wifi/WCNSS_qcom_cfg.ini
+        # We need to set up some symlinks for Prima to work                     
+        mount -o remount,rw /dev/block/mmcblk0p14 /system                       
+        rm /system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin               
+        ln -s /persist/WCNSS_qcom_wlan_nv.bin /system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+                                                                                
+        #rm /system/lib/modules/wlan.ko                                          
+        #ln -s /system/lib/modules/prima/prima_wlan.ko /system/lib/modules/wlan.ko
+        sync                                                         
+        mount -o remount,ro /dev/block/mmcblk0p14 /system
 
+        # We need to make sure the WCNSS platform driver is running.
+        # The WCNSS platform driver can either be built as a loadable
+        # module or it can be built-in to the kernel.  If it is built
+        # as a loadable module it can have one of several names.  So
+        # look to see if an appropriately named kernel module is
+        # present
+        wcnssmod=`ls /system/lib/modules/wcnss*.ko`
+        case "$wcnssmod" in
+            *wcnss*)
+                # A kernel module is present, so load it
+                insmod $wcnssmod
+                ;;
+            *)
+                # A kernel module is not present so we assume the
+                # driver is built-in to the kernel.  If that is the
+                # case then the driver will export a file which we
+                # must touch so that the driver knows that userspace
+                # is ready to handle firmware download requests.  See
+                # if an appropriately named device file is present
+                wcnssnode=`ls /dev/wcnss*`
+                case "$wcnssnode" in
+                    *wcnss*)
+                        # There is a device file.  Write to the file
+                        # so that the driver knows userspace is
+                        # available for firmware download requests
+                        echo 1 > $wcnssnode
+			echo 1 > /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr
+                        ;;
+                    *)
+                        # There is not a kernel module present and
+                        # there is not a device file present, so
+                        # the driver must not be available
+                        echo "No WCNSS module or device node detected"
+                        ;;
+                esac
+                ;;
+        esac
+        # Plumb down the device serial number
+        serialno=`getprop ro.serialno`
+        echo $serialno > /sys/devices/platform/wcnss_wlan.0/serial_number
+        ;;
+    msm8660*)
+    exit 0
+    ;;
+    msm7627a*)
+        wlanchip=`cat /persist/wlan_chip_id`
+        echo "The WLAN Chip ID is $wlanchip"
+        case "$wlanchip" in
+            "AR6003")
+             mount -t vfat -o remount,rw,barrier=0 /dev/block/mtdblock1 /system
+             rm  /system/lib/modules/wlan.ko
+             ln -s /system/wifi/ar6000.ko /system/lib/modules/wlan.ko
+             mv /system/bin/wpa_supplicant /system/bin/wpa_supplicant_wcn
+             ln -s /system/others/wpa_supplicant /system/bin/wpa_supplicant
+             mount -t vfat -o remount,ro,barrier=0 /dev/block/mtdblock1 /system
+             ;;
+            *)
+             echo "********************************************************************"
+              echo "*** Error:WI-FI chip ID is not specified in /persist/wlan_chip_id **"
+             echo "*******    WI-FI may not work    ***********************************"
+             ;;
+        esac
+    ;;
+    msm7630*)
+        wifishd=`getprop wlan.driver.status`
+        wlanchip=`cat /persist/wlan_chip_id`
+        echo "The WLAN Chip ID is $wlanchip"
+        case "$wlanchip" in
+            "WCN1314")
+             mount -t vfat -o remount,rw,barrier=0 /dev/block/mtdblock1 /system
+             ln -s /system/lib/modules/volans/WCN1314_rf.ko /system/lib/modules/wlan.ko
+             mount -t vfat -o remount,ro,barrier=0 /dev/block/mtdblock1 /system
+             ;;
+            "WCN1312")
+             mount -t vfat -o remount,rw,barrier=0 /dev/block/mtdblock1 /system
+             ln -s /system/lib/modules/libra/libra.ko /system/lib/modules/wlan.ko
+	      ln -s /data/hostapd/qcom_cfg.ini /etc/firmware/wlan/qcom_cfg.ini
+             ln -s /persist/qcom_wlan_nv.bin /etc/firmware/wlan/qcom_wlan_nv.bin
+             mount -t vfat -o remount,ro,barrier=0 /dev/block/mtdblock1 /system
+	      ;;
+           *)
+            echo "********************************************************************"
+	     echo "*** Error:WI-FI chip ID is not specified in /persist/wlan_chip_id **"
+            echo "*******    WI-FI may not work    ***********************************"
+            ;;
+        esac
+    ;;
+    msm7627*)
+        mount -t vfat -o remount,rw,barrier=0 /dev/block/mtdblock1 /system
+        ln -s /data/hostapd/qcom_cfg.ini /etc/firmware/wlan/qcom_cfg.ini
+        ln -s /persist/qcom_wlan_nv.bin /etc/firmware/wlan/qcom_wlan_nv.bin
+        mount -t vfat -o remount,ro,barrier=0 /dev/block/mtdblock1 /system
+    ;;
 
-# The property below is used in Qcom SDK for softap to determine
-# the wifi driver config file
-setprop wlan.driver.config /system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
-# We need to set up some symlinks for Prima to work                     
-mount -o remount,rw /dev/block/mmcblk0p14 /system                       
-#rm /system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin               
-#ln -s /persist/WCNSS_qcom_wlan_nv.bin /system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
-                                                                        
-rm /system/lib/modules/wlan.ko
-ln -s /system/lib/modules/prima/prima_wlan.ko /system/lib/modules/wlan.ko
-sync                                                         
-mount -o remount,ro /dev/block/mmcblk0p14 /system              
-
-echo 1 > /dev/wcnss_wlan
-echo 1 > /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr
-        
-# Plumb down the device serial number
-serialno=`getprop ro.serialno`
-echo $serialno > /sys/devices/platform/wcnss_wlan.0/serial_number
-
+    *)
+      ;;
+esac
 exit 0

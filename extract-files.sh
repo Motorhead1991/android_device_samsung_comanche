@@ -2,9 +2,6 @@
 
 set -e
 
-export DEVICE=comanche
-export VENDOR=samsung
-
 if [ $# -eq 0 ]; then
   SRC=adb
 else

@@ -34,7 +34,7 @@
 /dev/android_adb          0660   adb        adb
 /dev/android_adb_enable   0660   adb        adb
 /dev/ttyMSM0              0600   bluetooth  bluetooth
-/dev/ttyHS0               0660   bluetooth  bluetooth
+/dev/ttyHS0               0600   bluetooth  bluetooth
 /dev/ttyGS0               0660   system     system
 /dev/uinput               0660   system     bluetooth
 /dev/alarm                0664   system     radio
@@ -95,7 +95,7 @@
 /dev/smd4                 0660   system     system
 /dev/smd3                 0660   bluetooth      bluetooth
 /dev/smd2                 0660   bluetooth      bluetooth
-/dev/smd0                 0660   system     system
+/dev/smd0                 0640   radio      radio
 /dev/smd7                 0640   radio      radio
 /dev/smdcntl0             0640   radio      radio
 /dev/smdcntl1             0640   radio      radio
@@ -178,9 +178,8 @@
 /sys/devices/virtual/smdpkt/smdcntl*       open_timeout   0664 radio radio
 #permissions for sensors
 /dev/msm_dsps             0660  system       system
-
 # permissions for camera flash
-/sys/devices/virtual/camera/rear/rear_flash  0660  root  camera
+/sys/devices/virtual/camera/rear/rear_flash	0660	root	camera
 
 #for sensor
 /dev/mpu            0660  system       system
