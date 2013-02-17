@@ -1,8 +1,8 @@
 # Common ROM version
 ROM_VERSION_STABLE = 000
 ROM_VERSION_BETA = 000
-ROM_VERSION_ALPHA = 003
-ROM_VERSION_EXP = 000
+ROM_VERSION_ALPHA = 004
+ROM_VERSION_EXP = 001
 
 BUILD_VERSION = $(ROM_VERSION_STABLE)$(ROM_VERSION_BETA)$(ROM_VERSION_ALPHA)$(ROM_VERSION_EXP)
 
@@ -17,7 +17,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.goo.developerid=kemonine \
 	ro.goo.board=comanche \
-	ro.goo.rom=CyanogenMod10 \
+	ro.goo.rom=CyanogenMod10.1 \
 	ro.goo.version=$(BUILD_VERSION)
 
 # Rom Manager
