@@ -81,6 +81,9 @@ BOARD_HAVE_AUDIENCE_A2220 := true
 # Use USB Dock Audio
 BOARD_HAVE_DOCK_USBAUDIO := true
 
+# Camera
+COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB
+
 # Wifi
 WIFI_BAND := 802_11_ABG
 WPA_SUPPLICANT_VERSION := VER_0_8_X
@@ -110,4 +113,5 @@ TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-
+TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.524801/leds/lcd-backlight/brightness
+TW_MAX_BRIGHTESS := 255
