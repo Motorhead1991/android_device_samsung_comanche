@@ -29,9 +29,9 @@ TARGET_SCREEN_WIDTH := 480
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
-        device/samsung/comanche/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
-        device/samsung/comanche/audio/audio_policy.conf:system/etc/audio_policy.conf \
-        device/samsung/comanche/audio/audio_effects.conf:system/etc/audio_effects.conf
+    device/samsung/comanche/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
+    device/samsung/comanche/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    device/samsung/comanche/audio/audio_effects.conf:system/etc/audio_effects.conf
 
 # Hardware keyboard
 PRODUCT_COPY_FILES += \
@@ -97,7 +97,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.emmc.sdcard.partition=17 \
     ro.use_data_netmgrd=true \
     persist.data_netmgrd_nint=16 \
-    lpa.decode=true \
+    lpa.decode=false \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \
     ro.config.svlte1x=true \
