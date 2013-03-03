@@ -23,6 +23,7 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
+USE_CAMERA_STUB := true
 
 # inherit from common msm8960
 -include device/samsung/msm8960-common/BoardConfigCommon.mk
@@ -114,7 +115,3 @@ TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.524801/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTESS := 255
-
-# Camera
-USE_CAMERA_STUB := false
-TARGET_PROVIDES_CAMERA_HAL := true
