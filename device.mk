@@ -68,6 +68,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Lights
 PRODUCT_PACKAGES += lights.msm8960
 
+# Sensors
+PRODUCT_PACKAGES += sensors.msm8960
+
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
