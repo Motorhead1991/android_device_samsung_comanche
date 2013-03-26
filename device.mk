@@ -39,16 +39,17 @@ PRODUCT_COPY_FILES += \
 	device/samsung/comanche/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl
 
 # Ramdisk
-PRODUCT_PACKAGES += \
-    init.qcom.wifi.sh \
-    fstab.qcom \
-    initlogo.rle \
-    init.bt.rc \
-    init.qcom.bt.sh \
-    init.qcom.rc \
-    init.qcom.usb.rc \
-    init.target.rc \
-    ueventd.qcom.rc
+PRODUCT_COPY_FILES += \
+    device/samsung/comanche/rootdir/init.qcom.rc:root/init.qcom.rc \
+    device/samsung/comanche/rootdir/init.qcom.usb.rc:root/init.qcom.usb.rc \
+    device/samsung/comanche/rootdir/fstab.qcom:root/fstab.qcom \
+    device/samsung/comanche/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    device/samsung/comanche/rootdir/init.target.rc:root/init.target.rc \
+    device/samsung/comanche/rootdir/initlogo.rle:root/initlogo.rle 
+
+# Bluetooth
+PRODUCT_COPY_FILES += \
+    device/samsung/apexqtmo/configs/init.qcom.bt.sh:system/etc/init.qcom.bt.sh 
 
 # Torch
 PRODUCT_PACKAGES += Torch
