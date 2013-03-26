@@ -49,7 +49,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
-    device/samsung/apexqtmo/configs/init.qcom.bt.sh:system/etc/init.qcom.bt.sh 
+    device/samsung/comanche/configs/init.qcom.bt.sh:system/etc/init.qcom.bt.sh 
 
 # Torch
 PRODUCT_PACKAGES += Torch
