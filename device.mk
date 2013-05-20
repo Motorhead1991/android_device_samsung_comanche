@@ -51,6 +51,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/comanche/configs/init.qcom.bt.sh:system/etc/init.qcom.bt.sh 
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8960
+
+PRODUCT_COPY_FILES += \
+    device/samsung/comanche/gps/gps.conf:system/etc/gps.conf
+
 # Torch
 PRODUCT_PACKAGES += Torch
 
