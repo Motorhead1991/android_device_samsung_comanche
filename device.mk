@@ -109,9 +109,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     media.aac_51_output_enabled=true
 
-# common msm8960
-$(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
-
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-
-$(call inherit-product-if-exists, vendor/samsung/comanche/comanche-vendor.mk)
+# Inherit from d2-common
+$(call inherit-product, device/samsung/d2-common/d2-common.mk)
