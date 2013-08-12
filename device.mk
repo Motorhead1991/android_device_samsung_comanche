@@ -19,9 +19,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 ## overlays
 DEVICE_PACKAGE_OVERLAYS += device/samsung/comanche/overlay
 
+VARIENT_MODEL := comanche
+
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
+DEVICE_PACKAGE_OVERLAYS += device/samsung/d2-common/overlay-gsm
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 800
@@ -109,8 +113,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     media.aac_51_output_enabled=true
 
-# common msm8960
-$(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
+# common msm8960 - not anymore
+#$(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
+
+# Inherit from d2-common - move to d2
+$(call inherit-product, device/samsung/d2-common/d2-common.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 

@@ -25,21 +25,23 @@
 # against the traditional rules of inheritance).
 USE_CAMERA_STUB := true
 
-# inherit from common msm8960
--include device/samsung/msm8960-common/BoardConfigCommon.mk
+# inherit from common msm8960 - not anymore.
+#-include device/samsung/msm8960-common/BoardConfigCommon.mk
+
 
 # inherit from the proprietary version
 -include vendor/samsung/comanche/BoardConfigVendor.mk
+# inherit from common d2 - get d2 working
+-include device/samsung/d2-common/BoardConfigCommon.mk
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := comanche
 
 # Kernel
-TARGET_KERNEL_SOURCE        := kernel/samsung/comanche
-TARGET_KERNEL_CONFIG        := cyanogen_comanche_defconfig
-BOARD_KERNEL_CMDLINE        := console=null androidboot.hardware=qcom user_debug=31
-BOARD_KERNEL_BASE           := 0x80200000
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01300000
+TARGET_KERNEL_CONFIG        := cyanogen_apexq_defconfig
+TARGET_KERNEL_VARIANT_CONFIG :=
+BOARD_MKBOOTIMG_ARGS        := --ramdisk_offset 0x01500000
+TARGET_KERNEL_SOURCE        := kernel/samsung/d2
 BOARD_KERNEL_PAGESIZE       := 2048
 
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
@@ -51,7 +53,7 @@ BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := device/samsung/comanche/recovery.fstab
+#TARGET_RECOVERY_FSTAB := device/samsung/comanche/recovery.fstab
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
