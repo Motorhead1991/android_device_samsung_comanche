@@ -32,7 +32,7 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/samsung/comanche/BoardConfigVendor.mk
 # inherit from common d2 - get d2 working
--include device/samsung/d2-common/BoardConfigCommon.mk
+-include device/samsung/d2lte/BoardConfigCommon.mk
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := comanche

@@ -117,7 +117,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #$(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
 
 # Inherit from d2-common - move to d2
-$(call inherit-product, device/samsung/d2-common/d2-common.mk)
+$(call inherit-product, device/samsung/d2-common/d2lte.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
