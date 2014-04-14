@@ -38,7 +38,7 @@ USE_CAMERA_STUB := true
 TARGET_OTA_ASSERT_DEVICE := comanche
 
 # Kernel
-TARGET_KERNEL_CONFIG        := cyanogen_apexq_defconfig
+TARGET_KERNEL_CONFIG        := cyanogen_comanche2_defconfig
 TARGET_KERNEL_VARIANT_CONFIG :=
 BOARD_MKBOOTIMG_ARGS        := --ramdisk_offset 0x01500000
 TARGET_KERNEL_SOURCE        := kernel/samsung/d2
@@ -105,6 +105,8 @@ WIFI_DRIVER_FW_PATH_PARAM :=
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_P2P :=
+
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := false
 
 # TWRP
 DEVICE_RESOLUTION := 480x800

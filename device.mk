@@ -113,11 +113,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     media.aac_51_output_enabled=true
 
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.allow.mock.location=1 \
+    ro.debuggable=1
+    ro.adb.secure=0
+
 # common msm8960 - not anymore
 #$(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
 
 # Inherit from d2-common - move to d2
-$(call inherit-product, device/samsung/d2-common/d2lte.mk)
+$(call inherit-product, device/samsung/d2lte/d2-common.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
