@@ -49,7 +49,9 @@ PRODUCT_COPY_FILES += \
     device/samsung/comanche/rootdir/fstab.qcom:root/fstab.qcom \
     device/samsung/comanche/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
     device/samsung/comanche/rootdir/init.target.rc:root/init.target.rc \
-    device/samsung/comanche/rootdir/initlogo.rle:root/initlogo.rle 
+    device/samsung/comanche/rootdir/initlogo.rle:root/initlogo.rle \
+    device/samsung/comanche/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab \
+    device/samsung/comanche/rootdir/fstab.qcom:recovery/root/fstab.qcom
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
