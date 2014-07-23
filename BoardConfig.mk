@@ -38,7 +38,7 @@ USE_CAMERA_STUB := true
 TARGET_OTA_ASSERT_DEVICE := comanche
 
 # Kernel
-TARGET_KERNEL_CONFIG        := cyanogen_comanche2_defconfig
+TARGET_KERNEL_CONFIG        := cyanogen_comanche_defconfig
 TARGET_KERNEL_VARIANT_CONFIG :=
 BOARD_MKBOOTIMG_ARGS        := --ramdisk_offset 0x01500000
 TARGET_KERNEL_SOURCE        := kernel/samsung/d2
