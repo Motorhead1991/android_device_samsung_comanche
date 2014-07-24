@@ -53,7 +53,7 @@ BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-#TARGET_RECOVERY_FSTAB := device/samsung/comanche/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/samsung/comanche/recovery/recovery.fstab
 HAVE_SELINUX := true
 
 TARGET_USERIMAGES_USE_EXT4 := true
