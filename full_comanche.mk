@@ -21,14 +21,6 @@
 # lines, full and maguro, hence its name.
 #
  
-# Torch
-PRODUCT_PACKAGES := \
-    Torch
-
-# Comanche Settings
-PRODUCT_PACKAGES := \
-	RugbyProSettings
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from comanche device
@@ -40,3 +32,8 @@ PRODUCT_DEVICE := comanche
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_MODEL := SGH-I547
+
+# Comanche Settings (For Rugby specific tweaks -- most notably the "user" key)
+PRODUCT_PACKAGES := \
+       RugbyProSettings
+
