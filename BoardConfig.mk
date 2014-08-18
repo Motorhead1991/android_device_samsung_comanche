@@ -26,21 +26,20 @@
 USE_CAMERA_STUB := true
 
 # inherit from common msm8960 - not anymore.
-#-include device/samsung/msm8960-common/BoardConfigCommon.mk
-
+-include device/samsung/msm8960-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/samsung/comanche/BoardConfigVendor.mk
+
 # inherit from common d2 - get d2 working
--include device/samsung/d2lte/BoardConfigCommon.mk
+#-include device/samsung/d2lte/BoardConfigCommon.mk
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := comanche
+TARGET_BOARD_INFO_FILE ?= device/samsung/comanche/board-info.txt
 
 # Kernel
 TARGET_KERNEL_CONFIG        := cyanogen_comanche_defconfig
-BOARD_MKBOOTIMG_ARGS        := --ramdisk_offset 0x01500000
-TARGET_KERNEL_SOURCE        := kernel/samsung/d2
 
 # Not a unified device
 TARGET_UNIFIED_DEVICE :=
@@ -48,7 +47,7 @@ TARGET_INIT_VENDOR_LIB :=
 TARGET_LIBINIT_DEFINES_FILE :=
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/apexqtmo/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/comanche/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF :=
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY :=
 BOARD_HAVE_BLUETOOTH_BCM :=
@@ -74,7 +73,7 @@ WIFI_DRIVER_FW_PATH_AP      := "ap"
 WIFI_DRIVER_FW_PATH_P2P     :=
 
 #Audio
-BOARD_HAVE_AUDIENCE_A2220 :=
+BOARD_HAVE_AUDIENCE_A2220 := true
 BOARD_USES_SEPERATED_VOICE_SPEAKER := true
 BOARD_USES_FLUENCE_INCALL := false
 BOARD_USES_FLUENCE_FOR_VOIP := false
