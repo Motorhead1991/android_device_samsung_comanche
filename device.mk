@@ -28,7 +28,7 @@ PRODUCT_COPY_FILES += \
 # Ramdisk / boot logo
 PRODUCT_COPY_FILES += \
     device/samsung/comanche/rootdir/initlogo.rle:root/initlogo.rle \
-    device/samsung/comanche/recovery/twrp.fstab:recovery/root/etc/twrp.fstab \
+    device/samsung/comanche/recovery/twrp.fstab:recovery/root/etc/twrp.fstab 
 
 # Media profile
 PRODUCT_COPY_FILES += \
@@ -44,7 +44,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     WCNSS_cfg.dat \
     WCNSS_qcom_cfg.ini \
-    WCNSS_qcom_wlan_nv.bin_
+    WCNSS_qcom_wlan_nv.bin
 
 # d2-common
-$(call inherit-product, device/samsung/d2lte/d2-common.mk)
