@@ -1,4 +1,4 @@
-$(call inherit-product, device/samsung/comanche/device.mk)
+$(call inherit-product, device/samsung/comanche/full_comanche.mk)
 #$(call inherit-product, $(LOCAL_PATH)/build_props.mk)
 
 # Inherit some common CM stuff.
