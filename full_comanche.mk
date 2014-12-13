@@ -32,8 +32,3 @@ PRODUCT_DEVICE := comanche
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_MODEL := SGH-I547
-
-# Comanche Settings (For Rugby specific tweaks -- most notably the "user" key)
-PRODUCT_PACKAGES := \
-       RugbyProSettings
-
