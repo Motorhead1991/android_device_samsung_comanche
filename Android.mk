@@ -38,19 +38,21 @@ $(FIRMWARE_DSPS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_DSPS_SYMLINKS)
 
 FIRMWARE_MODEM_IMAGES := \
-    modem.b00 modem.b01 modem.b02 modem.b03 modem.b04 modem.b05 modem.b06 modem.b07 modem.mdt
+    modem.b00 modem.b01 modem.b02 modem.b03 modem.b04 modem.b05 modem.b06 modem.b07 modem.b08 \
+    modem.b09 modem.mdt
 
 FIRMWARE_MODEM_IMAGES += \
     modem_fw.b00 modem_fw.b01 modem_fw.b02 modem_fw.b03 modem_fw.b04 modem_fw.b05 modem_fw.b06 \
-    modem_fw.b07 modem_fw.b08 modem_fw.b09 modem_fw.b10 modem_fw.b13 modem_fw.b14 modem_fw.b21 \
-    modem_fw.b22 modem_fw.b23 modem_fw.b25 modem_fw.b26 modem_fw.b29 modem_fw.mdt
+    modem_fw.b07 modem_fw.b08 modem_fw.b09 modem_fw.b10 modem_fw.b11 modem_fw.b13 modem_fw.b14 \
+    modem_fw.b21 modem_fw.b22 modem_fw.b23 modem_fw.b25 modem_fw.b26 modem_fw.b29 \
+    modem_fw.fli modem_fw.mdt
 
 FIRMWARE_MODEM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_MODEM_IMAGES)))
 $(FIRMWARE_MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Modem Firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /firmware-mdm/image/$(notdir $(subst modem_fw,modem_f2,$@)) $@
+	$(hide) ln -sf /firmware-mdm/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MODEM_SYMLINKS)
 
@@ -65,6 +67,16 @@ $(FIRMWARE_Q6_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /firmware-mdm/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_Q6_SYMLINKS)
+
+FIRMWARE_SSHDCPAP_IMAGES := \
+    sshdcpap.b00 sshdcpap.b01 sshdcpap.b02 sshdcpap.b03 sshdcpap.mdt
+
+FIRMWARE_SSHDCPAP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_SSHDCPAP_IMAGES)))
+$(FIRMWARE_SSHDCPAP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "SSHDCPAP Firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware-mdm/image/$(notdir $@) $@
 
 FIRMWARE_TZ_IMAGES := \
     tzapps.b00 tzapps.b01 tzapps.b02 tzapps.b03 tzapps.mdt
