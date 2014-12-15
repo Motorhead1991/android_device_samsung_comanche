@@ -36,7 +36,7 @@ USE_CAMERA_STUB := true
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := comanche
-TARGET_BOARD_INFO_FILE ?= device/samsung/comanche/board-info.txt
+#TARGET_BOARD_INFO_FILE ?= device/samsung/comanche/board-info.txt
 
 # Kernel
 TARGET_KERNEL_CONFIG        := cyanogen_comanche_defconfig
