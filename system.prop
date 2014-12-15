@@ -1,14 +1,19 @@
-# system.prop for SGH-T699
+# system.prop for SGH-I547
 #
 
 # ril
+rild.libpath=/system/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
 telephony.lteOnGsmDevice=1
 ro.telephony.default_network=9
 
 # bt
-ro.qualcomm.bt.hci_transport=smd
+#ro.qualcomm.bt.hci_transport=smd
 
 # sensors
 ro.yas_softiron.comanche=true
 
+# audio
+persist.audio.fluence.mode=endfire
+persist.audio.handset.mic=digital
+ro.qc.sdk.audio.fluencetype=fluence
