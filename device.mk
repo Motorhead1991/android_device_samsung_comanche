@@ -18,7 +18,7 @@
 $(call inherit-product-if-exists, vendor/samsung/comanche/comanche-vendor.mk)
 
 ## overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/comanche/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/d2-common/overlay
 
 # Boot animation and screen size
 PRODUCT_AAPT_CONFIG := normal hdpi hdpi
@@ -29,20 +29,27 @@ PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=240
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-2048-dalvik-heap.mk)
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    50bluetooth \
+    60compass \
+    init.target.rc \
+    wifimac.sh
+
 # Audio configuration
 PRODUCT_COPY_FILES += \
-    device/samsung/d2lte/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
-    device/samsung/d2lte/audio/audio_policy.conf:system/etc/audio_policy.conf
+    device/samsung/d2-common/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
+    device/samsung/d2-common/audio/audio_policy.conf:system/etc/audio_policy.conf
 
 # Keylayout
 PRODUCT_COPY_FILES += \
-    device/samsung/d2lte/keylayout/fsa9485.kl:system/usr/keylayout/fsa9485.kl \
-    device/samsung/d2lte/keylayout/msm8960-snd-card_Button_Jack.kl:system/usr/keylayout/msm8960-snd-card_Button_Jack.kl \
-    device/samsung/d2lte/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
+    device/samsung/d2-common/keylayout/fsa9485.kl:system/usr/keylayout/fsa9485.kl \
+    device/samsung/d2-common/keylayout/msm8960-snd-card_Button_Jack.kl:system/usr/keylayout/msm8960-snd-card_Button_Jack.kl \
+    device/samsung/d2-common/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
     device/samsung/comanche/keylayout/sec_keys.kl:system/usr/keylayout/sec_keys.kl \
-    device/samsung/d2lte/keylayout/sec_powerkey.kl:system/usr/keylayout/sec_powerkey.kl \
-    device/samsung/d2lte/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
-    device/samsung/d2lte/keylayout/sii9234_rcp.kl:system/usr/keylayout/sii9234_rcp.kl
+    device/samsung/d2-common/keylayout/sec_powerkey.kl:system/usr/keylayout/sec_powerkey.kl \
+    device/samsung/d2-common/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
+    device/samsung/d2-common/keylayout/sii9234_rcp.kl:system/usr/keylayout/sii9234_rcp.kl
 
 # Ramdisk / boot logo
 PRODUCT_COPY_FILES += \
@@ -55,8 +62,8 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_COPY_FILES += \
-    device/samsung/d2lte/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    device/samsung/d2lte/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+    device/samsung/d2-common/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    device/samsung/d2-common/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 # scripts
 PRODUCT_PACKAGES += \
