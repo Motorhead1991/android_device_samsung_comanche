@@ -25,52 +25,49 @@
 # against the traditional rules of inheritance).
 USE_CAMERA_STUB := true
 
-# inherit from common msm8960 - not anymore.
+# inherit from common msm8960
 -include device/samsung/msm8960-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/samsung/comanche/BoardConfigVendor.mk
 
-# inherit from common d2 - get d2 working
-#-include device/samsung/d2lte/BoardConfigCommon.mk
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/comanche/include
+
+TARGET_BOOTLOADER_BOARD_NAME := MSM8960
+
+TARGET_KERNEL_USE_AOSP_TOOLCHAIN := false
+TARGET_KERNEL_TOOLCHAIN_VERSION := linaro-4.9
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := comanche
-#TARGET_BOARD_INFO_FILE ?= device/samsung/comanche/board-info.txt
+TARGET_BOARD_INFO_FILE ?= device/samsung/comanche/board-info.txt
 
 # Kernel
 TARGET_KERNEL_CONFIG        := cyanogen_comanche_defconfig
 
-# Not a unified device
-TARGET_UNIFIED_DEVICE :=
-TARGET_INIT_VENDOR_LIB :=
-TARGET_LIBINIT_DEFINES_FILE :=
+# RIL
+BOARD_RIL_CLASS := ../../../device/samsung/d2-common/ril
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/comanche/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF :=
-BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY :=
-BOARD_HAVE_BLUETOOTH_BCM :=
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 QCOM_BT_USE_SMD_TTY := true
 
-# Wifi
-BOARD_WLAN_DEVICE := qcwcn
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
-BOARD_HAVE_SAMSUNG_WIFI :=
+# WiFi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
-
-WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/prima_wlan.ko"
-WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/prima_wlan/parameters/fwpath"
-WIFI_DRIVER_MODULE_NAME     := "prima_wlan"
-WIFI_DRIVER_MODULE_ARG      :=
-WIFI_DRIVER_MODULE_AP_ARG   :=
-WIFI_DRIVER_FW_PATH_STA     := "sta"
-WIFI_DRIVER_FW_PATH_AP      := "ap"
-WIFI_DRIVER_FW_PATH_P2P     :=
+BOARD_WLAN_DEVICE := qcwcn
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_${BOARD_WLAN_DEVICE}
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_${BOARD_WLAN_DEVICE}
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/prima_wlan.ko"
+WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/prima_wlan/parameters/fwpath"
+WIFI_DRIVER_MODULE_NAME := "prima_wlan"
+WIFI_DRIVER_FW_PATH_STA := "sta"
+WIFI_DRIVER_FW_PATH_AP := "ap"
 
 #Audio
 BOARD_HAVE_AUDIENCE_A2220 := true
@@ -81,7 +78,15 @@ BOARD_USES_FLUENCE_FOR_VOIP := false
 # Camera
 TARGET_NEED_DISABLE_FACE_DETECTION_BOTH_CAMERAS := true
 TARGET_NEED_DISABLE_AUTOFOCUS := true
-# TARGET_NEED_PREVIEW_SIZE_FIXUP := true
+TARGET_NEED_PREVIEW_SIZE_FIXUP := true
+
+# Partitions
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00A00000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1572864000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 28651290624
+BOARD_FLASH_BLOCK_SIZE := 131072
 
 # TWRP
 DEVICE_RESOLUTION := 480x800
@@ -94,3 +99,5 @@ TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.524801/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTESS := 255
+
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/comanche
