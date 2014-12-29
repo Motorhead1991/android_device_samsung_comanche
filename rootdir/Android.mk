@@ -40,8 +40,9 @@ LOCAL_SRC_FILES    := etc/wifimac.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT)/bin
 include $(BUILD_PREBUILT)
 
+include $(CLEAR_VARS)
 LOCAL_MODULE       := fstab.qcom
-LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/fstab.qcom
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
