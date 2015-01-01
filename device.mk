@@ -36,6 +36,12 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     wifimac.sh
 
+# For userdebug builds
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.allow.mock.location=1 \
+    ro.debuggable=1
+
 # Audio configuration
 PRODUCT_COPY_FILES += \
     device/samsung/d2-common/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
