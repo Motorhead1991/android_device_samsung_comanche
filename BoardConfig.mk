@@ -43,6 +43,7 @@ TARGET_OTA_ASSERT_DEVICE := comanche
 TARGET_BOARD_INFO_FILE ?= device/samsung/comanche/board-info.txt
 
 # Kernel
+TARGET_KERNEL_SOURCE        := kernel/samsung/blackbird
 TARGET_KERNEL_CONFIG        := cyanogen_comanche_defconfig
 
 # RIL
