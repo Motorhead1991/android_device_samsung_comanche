@@ -18,7 +18,7 @@
 $(call inherit-product-if-exists, vendor/samsung/comanche/comanche-vendor.mk)
 
 ## overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/d2-common/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/comanche/overlay
 
 # Boot animation and screen size
 PRODUCT_AAPT_CONFIG := normal hdpi hdpi
