@@ -82,6 +82,10 @@ PRODUCT_PACKAGES += \
     WCNSS_cfg.dat \
     WCNSS_qcom_cfg.ini \
     WCNSS_qcom_wlan_nv.bin
+    
+# Torch
+PRODUCT_PACKAGES += \
+    Torch
 
 # msm8960 common
 $(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
