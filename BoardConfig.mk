@@ -23,7 +23,7 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 
 # inherit from common msm8960
 -include device/samsung/msm8960-common/BoardConfigCommon.mk
@@ -76,6 +76,7 @@ BOARD_USES_FLUENCE_INCALL := false
 BOARD_USES_FLUENCE_FOR_VOIP := false
 
 # Camera
+TARGET_PROVIDES_CAMERA_HAL := true
 TARGET_NEED_DISABLE_FACE_DETECTION_BOTH_CAMERAS := true
 TARGET_NEED_DISABLE_AUTOFOCUS := true
 TARGET_NEED_PREVIEW_SIZE_FIXUP := true
