@@ -107,10 +107,10 @@ FIRMWARE_WCNSS_IMAGES := \
 
 FIRMWARE_WCNSS_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(FIRMWARE_WCNSS_IMAGES)))
 $(FIRMWARE_WCNSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Wcnss Firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /firmware-mdm/image/$(notdir $@) $@
+        @echo "Wcnss Firmware link: $@"
+        @mkdir -p $(dir $@)
+        @rm -rf $@
+        $(hide) ln -sf /firmware-mdm/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_WCNSS_SYMLINKS)
 
