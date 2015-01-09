@@ -47,7 +47,7 @@ TARGET_KERNEL_SOURCE        := kernel/samsung/blackbird
 TARGET_KERNEL_CONFIG        := cyanogen_comanche_defconfig
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/samsung/d2-common/ril
+BOARD_RIL_CLASS := ../../../device/samsung/comanche/ril
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/comanche/bluetooth
