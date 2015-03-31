@@ -47,6 +47,8 @@ STRICT_ALIASING := true
 GRAPHITE_OPTS := true
 TARGET_USE_PIPE := true
 
+DEVICE_USE_SYNAPSE := true
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := comanche
 TARGET_BOARD_INFO_FILE ?= device/samsung/comanche/board-info.txt

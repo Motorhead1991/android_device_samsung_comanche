@@ -24,6 +24,16 @@ LOCAL_SRC_FILES    := etc/60compass
 LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/init.d
 include $(BUILD_PREBUILT)
 
+ifeq ($(DEVICE_USE_SYNAPSE),true)
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.qcom.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.qcom.rc
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+endif
+
 include $(CLEAR_VARS)
 LOCAL_MODULE       := 60sensors
 LOCAL_MODULE_TAGS  := optional
@@ -47,3 +57,12 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/fstab.qcom
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.reven.post_boot.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.reven.post_boot.sh
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+

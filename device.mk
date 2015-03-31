@@ -29,12 +29,17 @@ PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=240
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-2048-dalvik-heap.mk)
 
+ifneq ($(filter true,$(DEVICE_USE_SYNAPSE)),)
+$(call inherit-product, device/samsung/comanche/rootdir/synapse.mk)
+endif
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     50bluetooth \
     60compass \
     init.target.rc \
-    wifimac.sh
+    wifimac.sh \
+    init.reven.post_boot.sh
 
 # For userdebug builds
 ADDITIONAL_DEFAULT_PROPERTIES += \
@@ -87,3 +92,4 @@ PRODUCT_PACKAGES += \
 
 # msm8960 common
 $(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
+
