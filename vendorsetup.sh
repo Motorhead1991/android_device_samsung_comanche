@@ -1,2 +1,2 @@
-add_lunch_combo cm_comanche-eng
-
+add_lunch_combo cm_comanche-userdebug
+add_lunch_combo liquid_comanche-userdebug
