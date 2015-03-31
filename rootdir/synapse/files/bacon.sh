@@ -1,6 +1,6 @@
 #!/system/bin/sh
 
-BB=/sbin/busybox;
+BB=/system/xbin/busybox;
 
 case "$1" in
 	CPUFrequencyList)

@@ -1,4 +1,4 @@
-#!/sbin/busybox sh
+#!/system/xbin/busybox sh
 
 MPS='0:"Disabled", 1:"1", 2:"2"'
 
