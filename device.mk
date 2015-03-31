@@ -21,8 +21,8 @@ $(call inherit-product-if-exists, vendor/samsung/comanche/comanche-vendor.mk)
 DEVICE_PACKAGE_OVERLAYS += device/samsung/comanche/overlay
 
 # Boot animation and screen size
-PRODUCT_AAPT_CONFIG := normal hdpi hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 TARGET_SCREEN_HEIGHT := 800
 TARGET_SCREEN_WIDTH := 480
 PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=240
@@ -73,9 +73,7 @@ PRODUCT_COPY_FILES += \
 
 # scripts
 PRODUCT_PACKAGES += \
-    50bluetooth \
-    60sensors \
-    wifimac.sh
+    camera.MSM8960
 
 # prima wlan
 PRODUCT_PACKAGES += \
