@@ -1,7 +1,7 @@
 # Synapse action files
 PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/synapse/actions/boolean:root/res/synapse/actions/boolean \
-    $(LOCAL_PATH)/synapse/actions/bracket-option:root/res/synapse/actions/bracket-options \
+    $(LOCAL_PATH)/synapse/actions/bracket-option:root/res/synapse/actions/bracket-option \
     $(LOCAL_PATH)/synapse/actions/buildprop:root/res/synapse/actions/buildprop \
     $(LOCAL_PATH)/synapse/actions/cpuboostibf:root/res/synapse/actions/cpuboostibf \
     $(LOCAL_PATH)/synapse/actions/cpuset:root/res/synapse/actions/cpuset \
