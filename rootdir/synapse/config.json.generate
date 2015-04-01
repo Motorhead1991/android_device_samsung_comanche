@@ -1,5 +1,5 @@
 BB=/system/xbin/busybox;
-DEVICE=/res/synapse/files/bacon.sh;
+DEVICE=/res/synapse/device/.device.sh;
 
 bool() {
   [ `$BB cat $1` == "Y" ] && $BB echo "1";

@@ -1,5 +1,5 @@
 BB=/system/xbin/busybox;
-DEVICE=/res/synapse/files/bacon.sh;
+DEVICE=/res/synapse/device/.device.sh;
 
 case $1 in
 	`sh $DEVICE DirGPUMinPwrLevel`)
