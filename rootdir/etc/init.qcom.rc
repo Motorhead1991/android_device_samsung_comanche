@@ -889,11 +889,4 @@ service bugreport /system/bin/dumpstate -d -p -B \
     oneshot
     keycodes 114 115 116
 
-service blackbird-post-boot /system/bin/sh /init.reven.post_boot.sh
- class late_start
- user root
- disabled
- oneshot
-
-on property:sys.boot_completed=1
- start blackbird-post-boot
+exec /init.reven.post_boot.sh

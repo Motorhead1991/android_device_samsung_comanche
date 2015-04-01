@@ -1,6 +1,6 @@
 #!/system/bin/sh
 
-BB=/sbin/busybox
+BB=/system/xbin/busybox
 
 ############################
 # Custom Kernel Settings for B14CKB1RD Kernel!!
@@ -29,25 +29,22 @@ echo 2048 > /sys/block/mmcblk0/bdi/read_ahead_kb
 ############################
 # GPU Governor
 #
-echo simple_ondemand > /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor
-echo 389000000 > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq
+echo simple_ondemand > /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/governor
+echo 400000000 > /sys/devices/platform/kgsl-3d0.0/kgsl/kgsl-3d0/max_gpuclk
 
 ############################
 # Set MIN-MAX Freq on boot
 #
-echo 300000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-echo 300000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
-echo 300000 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
-echo 300000 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
-echo 1958400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-echo 1958400 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
-echo 1958400 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
-echo 1958400 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
+echo 384000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+echo 384000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+echo 1512000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 1512000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+
 
 ############################
 # Power Effecient Workqueues (Enable for battery)
 #
-echo 1 > /sys/module/workqueue/parameters/power_efficient
+# echo 1 > /sys/module/workqueue/parameters/power_efficient
 echo 0 > /sys/module/subsystem_restart/parameters/enable_ramdumps
 
 ############################
@@ -76,9 +73,3 @@ $BB echo "Boot initiated on $(date)" > /tmp/bootcheck;
 
 ln -s /res/synapse/uci /sbin/uci
 /sbin/uci
-
-############################
-# Update Touch Firmware on Boot
-#
-echo 1 > /sys/devices/virtual/input/lge_touch/touch_gesture
-echo 1 > /sys/devices/virtual/input/lge_touch/firmware
