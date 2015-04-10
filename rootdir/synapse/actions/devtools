@@ -1,5 +1,5 @@
 BB=/system/xbin/busybox;
-DEVICE=/res/synapse/device/.device.sh;
+DEVICE=/res/synapse/files/device.sh;
 
 TIMESTAMP=`date +%Y-%m-%d.%H.%M.%S`;
 LOGS=/sdcard/logs;

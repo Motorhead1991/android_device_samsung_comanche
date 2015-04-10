@@ -1,6 +1,6 @@
 # Synapse Device
-PRODUCT_COPY_FILES := \
-    $(LOCAL_PATH)/synapse/device/.device.sh:root/res/synapse/.device.sh \
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/synapse/device/device.sh:root/res/synapse/files/device.sh \
 
 # Synapse Actions
 PRODUCT_COPY_FILES += \
