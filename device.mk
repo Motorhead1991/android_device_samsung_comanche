@@ -27,11 +27,16 @@ TARGET_SCREEN_HEIGHT := 800
 TARGET_SCREEN_WIDTH := 480
 PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=240
 
-$(call inherit-product, frameworks/native/build/phone-hdpi-2048-dalvik-heap.mk)
+# Device hardware info
+PRODUCT_CHIPSET := Qualcomm Snapdragon S4 Pro
+PRODUCT_CPU := Dual Core MSM8960 1.5Ghz
+PRODUCT_GPU := Adreno 225
+PRODUCT_REAR_CAM := 5 MP, 2592 х 1944 pixels
+PRODUCT_FRONT_CAM := 1.3MP
+PRODUCT_SCREEN_SIZE := 4.0 inches ~233ppi (AMOLED Display)
+PRODUCT_SCREEN_RES := $(TARGET_SCREEN_WIDTH) x $(TARGET_SCREEN_HEIGHT)
 
-ifneq ($(filter true,$(DEVICE_USE_SYNAPSE)),)
-$(call inherit-product, device/samsung/comanche/rootdir/synapse.mk)
-endif
+$(call inherit-product, frameworks/native/build/phone-hdpi-2048-dalvik-heap.mk)
 
 # Ramdisk
 PRODUCT_PACKAGES += \
