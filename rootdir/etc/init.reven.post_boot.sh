@@ -44,7 +44,7 @@ echo 1512000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
 ############################
 # Power Effecient Workqueues (Enable for battery)
 #
-# echo 1 > /sys/module/workqueue/parameters/power_efficient
+echo 1 > /sys/module/workqueue/parameters/power_efficient
 echo 0 > /sys/module/subsystem_restart/parameters/enable_ramdumps
 
 ############################
