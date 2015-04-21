@@ -1,0 +1,18 @@
+[
+  {
+    "repository":  "device_samsung_msm8960-common",
+    "target_path": "device/samsung/msm8960-common",
+    "revision":    "L5"
+  },
+  {
+    "remote":      "B14CKB1RD",
+    "repository":  "B14CKB1RD_Kernel_d2",
+    "target_path": "kernel/samsung/blackbird",
+    "revision":    "Lollipop" 
+  },
+  {
+    "repository":  "proprietary_vendor_samsung",
+    "target_path": "vendor/samsung",
+    "revision":    "cm-12.1"
+  }
+]
